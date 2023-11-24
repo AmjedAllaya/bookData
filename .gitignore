@@ -1,0 +1,3 @@
+env/**
+bookData/__pycache__/**
+bookData/spiders/__pycache__/**

@@ -1,0 +1,64 @@
+show book data:
+curl 'https://kxbwmqov6jgg3daaamb744ycu4.appsync-api.us-east-1.amazonaws.com/graphql' \
+  -H 'authority: kxbwmqov6jgg3daaamb744ycu4.appsync-api.us-east-1.amazonaws.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: en,fr-FR;q=0.9,fr;q=0.8,en-US;q=0.7,ar;q=0.6' \
+  -H 'authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImZSNXpfWTVjYXZQMllsaXU3eks0YUNJVEJPcVBWdGtxTE9XVURfV3dGOTQifQ.eyJpc3MiOiJodHRwczovL3d3dy5nb29kcmVhZHMuY29tIiwic3ViIjoia2NhOi8vcHJvZmlsZTpnb29kcmVhZHMvQTJPVkRRWEpNWDZaVzgiLCJhdWQiOiI2M2RjMjRlN2M2MTFlNmYxNzkyZjgxMzA1OGYyMTU2MGJkOGM2OTM4ZDU0YS5nb29kcmVhZHMuY29tIiwidXNlcl9pZCI6MTcxODQ3MTQwLCJyb2xlIjoidXNlciIsIm5vbmNlIjpudWxsLCJleHAiOjE3MDA4NDUyMzMsImlhdCI6MTcwMDg0NDkzM30.L0Ig1QkbBAty7G7QeP6QOeg17gXEWyfYllQLvQGHjLfrhK7i1D2auJo2b_o6yCQYtS58HEEDrbzEMNEdcWm3dguj3pUl7OWmWXnMpo-syOo-2nRdA4lfpU0NrvxCD-i8sHFC0jtNyIlE1OQb57ZP2P814l2uM3QrJqHG_w1cE8bs7aGufCq9XNqkefE87Y2qDOKntFl7gihWvZwdqzf4Rgi4J9Z6NooMPClNDaHgZZRpL9q31TPyZhFbj9kpEreFYXGbXhZ4V6b_fo72RADeqR-5KwHj4e0gS3tQHRoLQjqMwnUExUIOBaowDgvm8yvCBNaceBIAo7_-zQcOcyefiA' \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' \
+  -H 'origin: https://www.goodreads.com' \
+  -H 'pragma: no-cache' \
+  -H 'referer: https://www.goodreads.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="119", "Chromium";v="119", "Not?A_Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36' \
+  --data-raw $'{"operationName":"getReviews","variables":{"filters":{"resourceType":"WORK","resourceId":"kca://work/amzn1.gr.work.v3.LLlQ5m1TFikYUY7P"},"pagination":{"limit":10}},"query":"query getReviews($filters: BookReviewsFilterInput\u0021, $pagination: PaginationInput) {\\n  getReviews(filters: $filters, pagination: $pagination) {\\n    ...BookReviewsFragment\\n    __typename\\n  }\\n}\\n\\nfragment BookReviewsFragment on BookReviewsConnection {\\n  totalCount\\n  edges {\\n    node {\\n      ...ReviewCardFragment\\n      __typename\\n    }\\n    __typename\\n  }\\n  pageInfo {\\n    prevPageToken\\n    nextPageToken\\n    __typename\\n  }\\n  __typename\\n}\\n\\nfragment ReviewCardFragment on Review {\\n  __typename\\n  id\\n  creator {\\n    ...ReviewerProfileFragment\\n    __typename\\n  }\\n  recommendFor\\n  updatedAt\\n  createdAt\\n  spoilerStatus\\n  lastRevisionAt\\n  text\\n  rating\\n  shelving {\\n    shelf {\\n      name\\n      webUrl\\n      __typename\\n    }\\n    taggings {\\n      tag {\\n        name\\n        webUrl\\n        __typename\\n      }\\n      __typename\\n    }\\n    webUrl\\n    __typename\\n  }\\n  likeCount\\n  viewerHasLiked\\n  commentCount\\n}\\n\\nfragment ReviewerProfileFragment on User {\\n  id: legacyId\\n  imageUrlSquare\\n  isAuthor\\n  ...SocialUserFragment\\n  textReviewsCount\\n  viewerRelationshipStatus {\\n    isBlockedByViewer\\n    __typename\\n  }\\n  name\\n  webUrl\\n  contributor {\\n    id\\n    works {\\n      totalCount\\n      __typename\\n    }\\n    __typename\\n  }\\n  __typename\\n}\\n\\nfragment SocialUserFragment on User {\\n  viewerRelationshipStatus {\\n    isFollowing\\n    isFriend\\n    __typename\\n  }\\n  followersCount\\n  __typename\\n}\\n"}' \
+  --compressed
+
+
+reviews:
+curl 'https://kxbwmqov6jgg3daaamb744ycu4.appsync-api.us-east-1.amazonaws.com/graphql' \
+  -H 'authority: kxbwmqov6jgg3daaamb744ycu4.appsync-api.us-east-1.amazonaws.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: en,fr-FR;q=0.9,fr;q=0.8,en-US;q=0.7,ar;q=0.6' \
+  -H 'authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImZSNXpfWTVjYXZQMllsaXU3eks0YUNJVEJPcVBWdGtxTE9XVURfV3dGOTQifQ.eyJpc3MiOiJodHRwczovL3d3dy5nb29kcmVhZHMuY29tIiwic3ViIjoia2NhOi8vcHJvZmlsZTpnb29kcmVhZHMvQTJPVkRRWEpNWDZaVzgiLCJhdWQiOiI2M2RjMjRlN2M2MTFlNmYxNzkyZjgxMzA1OGYyMTU2MGJkOGM2OTM4ZDU0YS5nb29kcmVhZHMuY29tIiwidXNlcl9pZCI6MTcxODQ3MTQwLCJyb2xlIjoidXNlciIsIm5vbmNlIjpudWxsLCJleHAiOjE3MDA4NDU1NzEsImlhdCI6MTcwMDg0NTI3MX0.Jw-t35Ai_Oghl4TYXiOE9XJ-ua6sjBUKIUBiMZsy-YLmZvC0ZmSjLh6njX_WovZl0D2CJfkKAHyozjtxZeLgnWJaov3pdLmGwAGF8HSKqRlHUaW-5FDd_wZWGTznB3YDPJRVIF3hK02y9_9S5gssqZ3O0DigktUt3AeGzVrj_Glqbmyr1DmWq3xpWjIqPeVt2_qBctkjEIySCY3-rpEDo2KBqQw5kPxueTdVE544l8pxBEInq-zBQYV6B6KoNVSqz4vJjHyHgtcTLlUBScLh8ZOxJ7LrDSS2PL_YaT1fkZU1EdGzn6POs2QPqAfyVKWPwEyQZMU0wOA8B2D2dTALTA' \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' \
+  -H 'origin: https://www.goodreads.com' \
+  -H 'pragma: no-cache' \
+  -H 'referer: https://www.goodreads.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="119", "Chromium";v="119", "Not?A_Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36' \
+  --data-raw $'{"operationName":"getReviews","variables":{"filters":{"resourceType":"WORK","resourceId":"kca://work/amzn1.gr.work.v3.LLlQ5m1TFikYUY7P"},"pagination":{"limit":10}},"query":"query getReviews($filters: BookReviewsFilterInput\u0021, $pagination: PaginationInput) {\\n  getReviews(filters: $filters, pagination: $pagination) {\\n    ...BookReviewsFragment\\n    __typename\\n  }\\n}\\n\\nfragment BookReviewsFragment on BookReviewsConnection {\\n  totalCount\\n  edges {\\n    node {\\n      ...ReviewCardFragment\\n      __typename\\n    }\\n    __typename\\n  }\\n  pageInfo {\\n    prevPageToken\\n    nextPageToken\\n    __typename\\n  }\\n  __typename\\n}\\n\\nfragment ReviewCardFragment on Review {\\n  __typename\\n  id\\n  creator {\\n    ...ReviewerProfileFragment\\n    __typename\\n  }\\n  recommendFor\\n  updatedAt\\n  createdAt\\n  spoilerStatus\\n  lastRevisionAt\\n  text\\n  rating\\n  shelving {\\n    shelf {\\n      name\\n      webUrl\\n      __typename\\n    }\\n    taggings {\\n      tag {\\n        name\\n        webUrl\\n        __typename\\n      }\\n      __typename\\n    }\\n    webUrl\\n    __typename\\n  }\\n  likeCount\\n  viewerHasLiked\\n  commentCount\\n}\\n\\nfragment ReviewerProfileFragment on User {\\n  id: legacyId\\n  imageUrlSquare\\n  isAuthor\\n  ...SocialUserFragment\\n  textReviewsCount\\n  viewerRelationshipStatus {\\n    isBlockedByViewer\\n    __typename\\n  }\\n  name\\n  webUrl\\n  contributor {\\n    id\\n    works {\\n      totalCount\\n      __typename\\n    }\\n    __typename\\n  }\\n  __typename\\n}\\n\\nfragment SocialUserFragment on User {\\n  viewerRelationshipStatus {\\n    isFollowing\\n    isFriend\\n    __typename\\n  }\\n  followersCount\\n  __typename\\n}\\n"}' \
+  --compressed
+
+show "readers also enjoy" :
+curl 'https://kxbwmqov6jgg3daaamb744ycu4.appsync-api.us-east-1.amazonaws.com/graphql' \
+  -H 'authority: kxbwmqov6jgg3daaamb744ycu4.appsync-api.us-east-1.amazonaws.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: en,fr-FR;q=0.9,fr;q=0.8,en-US;q=0.7,ar;q=0.6' \
+  -H 'authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImZSNXpfWTVjYXZQMllsaXU3eks0YUNJVEJPcVBWdGtxTE9XVURfV3dGOTQifQ.eyJpc3MiOiJodHRwczovL3d3dy5nb29kcmVhZHMuY29tIiwic3ViIjoia2NhOi8vcHJvZmlsZTpnb29kcmVhZHMvQTJPVkRRWEpNWDZaVzgiLCJhdWQiOiI2M2RjMjRlN2M2MTFlNmYxNzkyZjgxMzA1OGYyMTU2MGJkOGM2OTM4ZDU0YS5nb29kcmVhZHMuY29tIiwidXNlcl9pZCI6MTcxODQ3MTQwLCJyb2xlIjoidXNlciIsIm5vbmNlIjpudWxsLCJleHAiOjE3MDA4NDU1NzEsImlhdCI6MTcwMDg0NTI3MX0.Jw-t35Ai_Oghl4TYXiOE9XJ-ua6sjBUKIUBiMZsy-YLmZvC0ZmSjLh6njX_WovZl0D2CJfkKAHyozjtxZeLgnWJaov3pdLmGwAGF8HSKqRlHUaW-5FDd_wZWGTznB3YDPJRVIF3hK02y9_9S5gssqZ3O0DigktUt3AeGzVrj_Glqbmyr1DmWq3xpWjIqPeVt2_qBctkjEIySCY3-rpEDo2KBqQw5kPxueTdVE544l8pxBEInq-zBQYV6B6KoNVSqz4vJjHyHgtcTLlUBScLh8ZOxJ7LrDSS2PL_YaT1fkZU1EdGzn6POs2QPqAfyVKWPwEyQZMU0wOA8B2D2dTALTA' \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' \
+  -H 'origin: https://www.goodreads.com' \
+  -H 'pragma: no-cache' \
+  -H 'referer: https://www.goodreads.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="119", "Chromium";v="119", "Not?A_Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36' \
+  --data-raw $'{"operationName":"getSimilarBooks","variables":{"limit":20,"id":"kca://book/amzn1.gr.book.v3.LafyjpcmMkH8Ud1f"},"query":"query getSimilarBooks($id: ID\u0021, $limit: Int\u0021) {\\n  getSimilarBooks(id: $id, pagination: {limit: $limit}) {\\n    webUrl\\n    edges {\\n      node {\\n        title\\n        imageUrl\\n        webUrl\\n        primaryContributorEdge {\\n          node {\\n            name\\n            __typename\\n          }\\n          __typename\\n        }\\n        work {\\n          stats {\\n            averageRating\\n            ratingsCount\\n            __typename\\n          }\\n          __typename\\n        }\\n        __typename\\n      }\\n      __typename\\n    }\\n    __typename\\n  }\\n}\\n"}' \
+  --compressed
+
