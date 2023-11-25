@@ -1,5 +1,4 @@
 import scrapy
-import json
 from copy import deepcopy
 
 class GoodreadsSpider(scrapy.Spider):
@@ -80,21 +79,8 @@ class GoodreadsSpider(scrapy.Spider):
             book_details[key] = value.strip() if value else None
 
         # Extract author details
-        author_section = response.css('.PageSection h3.Text__title3:contains("About the author") + div .DetailsLayoutRightParagraph span.Formatted::text').get()
+        author_section = response.css('div .DetailsLayoutRightParagraph span.Formatted::text').get()
         book_details['author_details'] = author_section.strip() if author_section else None
-
-        # Extract related books
-        related_books = response.css('.DynamicCarousel__item')
-        book_details['related_books'] = []
-
-        for related_book in related_books:
-            related_book_data = {
-                'title': related_book.css('.BookCard__title::text').get(),
-                'author': related_book.css('.BookCard__authorName::text').get(),
-                'avg_rating': related_book.css('.AverageRating__ratingValue::text').get(),
-                'ratings_count': related_book.css('.AverageRating__ratingsCount::text').get()
-            }
-            book_details['related_books'].append(related_book_data)
 
         # Extract ReviewsSectionStatistics details
         reviews_statistics = response.css('.ReviewsSectionStatistics__ratingStatistics .RatingStatistics__column')

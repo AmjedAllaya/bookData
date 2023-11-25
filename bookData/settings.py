@@ -74,6 +74,18 @@ ROBOTSTXT_OBEY = False
 #}
 
 # Configure item pipelines
+# settings.py
+
+# Enable the MongoDB pipeline
+ITEM_PIPELINES = {
+    'bookData.pipelines.MongoDBPipeline': 300,
+}
+
+# MongoDB connection settings
+MONGODB_URI = 'mongodb://localhost:27017/'
+MONGODB_DB = 'your_database_name'
+MONGODB_COLLECTION = 'your_collection_name'
+
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
 #    "bookData.pipelines.BookdataPipeline": 300,
